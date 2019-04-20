@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}{{lang}}{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+Define a new word in this language
+<br>
+<input id="newword" type="text"></input>
+<button onclick="window.location.href='/languages/{{lang}}/'+document.getElementById('newword').value">Go</button>
+<br><br>
+
+{% for word in words %}
+    <a href="/languages/{{lang}}/{{word}}">{{word}}</a>
+{% endfor %}
+{% endblock %}

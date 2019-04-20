@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}{{lang}} - {{word}}{% endblock %}
+{% block header %}
+  <h1><a href="/languages/{{lang}}">{{lang}}</a> - {{word}}</h1>
+{% endblock %}
+
+{% block content %}
+<style>
+.container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+</style>
+<section class="container">
+    <section class="definitions">
+    {% for def in definitions %}
+<pre>
+{{def}}
+</pre>
+    {% endfor %}
+    </section>
+    <section class="userinput">
+    <form method="post" onsubmit="this.submit(); this.reset(); return false;">
+    {{result}}<br><br>
+    Your definition:<br>
+    <textarea name="definition" rows="10" cols="80">{{definition}}</textarea>
+    <br>
+    <input type="submit" value="Submit"></input><br>
+    </form>
+    </section>
+    <section class="nsm">
+    <pre>
+{{allowedwords}}
+    </pre>
+    </section>
+</section>
+{% endblock %}
